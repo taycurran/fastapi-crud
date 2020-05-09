@@ -1,11 +1,7 @@
 from fastapi import FastAPI 
-import requests
+from app.api import ping
 
 app = FastAPI()
 
-@app.get("/ping")
-async def pong():
-    # some async operation could happen here
-    # example: notes = await get_all_notes()
-    return {"ping": "pong!"}
+app.include_router(ping.router)
 
